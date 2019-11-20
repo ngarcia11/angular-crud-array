@@ -1,0 +1,55 @@
+<!-- NAVIGATION -->
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Mantenimiento de Clientes</a>
+</nav>
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+   Bienvenido {{ title }}!
+  </h1>
+  <img width="150" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+
+<div class="container p-4">
+    <div class="row">
+      <!-- FORM -->
+      <div class="col-md-8 offset-md-2 mt-2">
+        <div class="card">
+          <form class="card-body">
+          <h3 class="card-title">Agregar Cliente</h3>
+          <label for="id">Id</label>
+          <input type="text" name="id" #newid class="form-control" autofocus [(ngModel)]="selectedUser.id">
+
+          <label for="name">Nombre</label>
+          <input type="text" name="name" #newname  class="form-control" [(ngModel)]="selectedUser.name">
+
+            <label for="address">Direcciòn</label>
+          <input type="text" name="address" #newaddress class="form-control" [(ngModel)]="selectedUser.address">
+
+          <input type="submit" (click)="addUser(newid, newname, newaddress, btn)" class="btn btn-primary btn-block mt-4" value="Guardar" #btn>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2 mt-2" *ngFor="let user of users">
+    <div class="card text-center">
+      <div class="card-header">
+        {{user.id}}
+      </div>
+      <div class="card-body">
+     {{user.name}}{{","}}  {{user.address}}
+        <h3 class="display-4"></h3>
+      </div>
+      <div class="card-footer">
+        <button  (click)="openForEdit(user, btn)" class="btn btn-primary">
+          Modificar
+        </button>
+        <button (click)="deleteUser(user)" class="btn btn-danger">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</div>
